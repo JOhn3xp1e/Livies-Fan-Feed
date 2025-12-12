@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .test-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .test-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .test-card h3 {
+            color: #8b5cf6;
+            margin-bottom: 10px;
+        }
+        
+        .test-button {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .test-button:hover {
+            background: #7c3aed;
+        }
+        
+        .console-output {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            min-height: 200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🚀 Dashboard Test Page</h1>
+            <p>Testing if everything loads correctly</p>
+        </div>
+        
+        <div class="test-content">
+            <div class="test-card">
+                <h3>Firebase Test</h3>
+                <p>Check if Firebase loads properly</p>
+                <button class="test-button" onclick="testFirebase()">Test Firebase</button>
+            </div>
+            
+            <div class="test-card">
+                <h3>Dashboard Test</h3>
+                <p>Check if Dashboard class loads</p>
+                <button class="test-button" onclick="testDashboard()">Test Dashboard</button>
+            </div>
+            
+            <div class="test-card">
+                <h3>CSS Test</h3>
+                <p>Check if styles load</p>
+                <div style="background: #8b5cf6; color: white; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                    If this is purple, CSS is working!
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-card">
+            <h3>Console Output</h3>
+            <div id="console" class="console-output">
+                Waiting for tests...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let consoleOutput = document.getElementById('console');
+        
+        function log(message) {
+            consoleOutput.innerHTML += message + '\n';
+            console.log(message);
+        }
+        
+        function testFirebase() {
+            log('\n=== Testing Firebase ===');
+            if (window.firebaseAuth) {
+                log('✅ Firebase Auth is defined');
+            } else {
+                log('❌ Firebase Auth is NOT defined');
+            }
+            
+            if (window.firebaseDatabase) {
+                log('✅ Firebase Database is defined');
+            } else {
+                log('❌ Firebase Database is NOT defined');
+            }
+        }
+        
+        function testDashboard() {
+            log('\n=== Testing Dashboard ===');
+            try {
+                if (typeof Dashboard === 'function') {
+                    log('✅ Dashboard class is defined');
+                    // Try to create an instance
+                    const testDash = new Dashboard();
+                    log('✅ Dashboard instance created');
+                } else {
+                    log('❌ Dashboard class is NOT defined');
+                }
+            } catch (error) {
+                log('❌ Error creating Dashboard: ' + error.message);
+            }
+        }
+        
+        // Auto-run tests on load
+        window.addEventListener('load', function() {
+            log('Page loaded successfully!');
+            testFirebase();
+            setTimeout(testDashboard, 1000);
+        });
+    </script>
+</body>
+</html>

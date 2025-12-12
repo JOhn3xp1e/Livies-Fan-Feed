@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY LOVEY OLIVIA</title>
+    
+    <!-- FIREBASE SDKs - MUST BE FIRST -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script type="module" src="firebase-config.js"></script>
+    
+    <!-- Your Firebase Configuration -->
+    <!-- <script src="firebase-config.js"></script> -->
+    
+    <!-- CSS and other libraries -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="mobile-logo">
+            <i class="fas fa-heart"></i>
+            <span>OliviaFan</span>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+        <button class="menu-close" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-content">
+            <a href="#" class="mobile-menu-item active">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="#" class="mobile-menu-item">
+                <i class="fas fa-users"></i> Community
+            </a>
+            <a href="#" class="mobile-menu-item">
+                <i class="fas fa-music"></i> Music
+            </a>
+            <a href="#" class="mobile-menu-item">
+                <i class="fas fa-ticket-alt"></i> Events
+            </a>
+            <a href="#" class="mobile-menu-item">
+                <i class="fas fa-cog"></i> Settings
+            </a>
+        </div>
+    </nav>
+
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Left Panel - Branding -->
+        <aside class="panel-left">
+            <div class="brand-content">
+                <!-- Logo -->
+                <div class="logo-section">
+                    <div class="logo-animated">
+                        <div class="logo-disc">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="logo-heart">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="brand-title">Olivia<span>Fan</span></h1>
+                        <p class="brand-subtitle">#1 Fan Community</p>
+                    </div>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="hero-content">
+                    <h2 class="hero-title">Join Millions of Passionate Fans</h2>
+                    <p class="hero-description">
+                        Exclusive content, early concert access, fan meetups, and a community that shares your love for Olivia's music.
+                    </p>
+                    
+                    <!-- Stats Cards -->
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <div class="stat-info">
+                                <span class="stat-number">1M+</span>
+                                <span class="stat-label">Active Fans</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-comments"></i>
+                            <div class="stat-info">
+                                <span class="stat-number">50K</span>
+                                <span class="stat-label">Daily Posts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="feature-title">Exclusive Content</h3>
+                        <p class="feature-description">Behind-the-scenes access</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Early Access</h3>
+                        <p class="feature-description">Concert tickets first</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="feature-title">Fan Rewards</h3>
+                        <p class="feature-description">Special merchandise</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">Community</h3>
+                        <p class="feature-description">Connect with fans</p>
+                    </div>
+                </div>
+
+                <!-- Quote Section -->
+                <div class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote class="quote-text">
+                        "All I've ever wanted was to be enough for someone else"
+                    </blockquote>
+                    <cite class="quote-author">Olivia Rodrigo</cite>
+                </div>
+
+                <!-- App Download (Mobile Only) -->
+                <div class="mobile-app-section">
+                    <p>Get our mobile app for better experience</p>
+                    <div class="app-buttons">
+                        <button class="app-btn ios-btn">
+                            <i class="fab fa-apple"></i>
+                            <span>iOS</span>
+                        </button>
+                        <button class="app-btn android-btn">
+                            <i class="fab fa-google-play"></i>
+                            <span>Android</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Panel - Forms -->
+        <section class="panel-right">
+            <div class="form-container">
+                <!-- Progress Steps (Mobile) -->
+                <div class="progress-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <span class="step-label">Login</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <span class="step-label">Sign Up</span>
+                    </div>
+                </div>
+
+                <!-- Form Header -->
+                <div class="form-header">
+                    <h1 class="form-title" id="formTitle">Welcome Back!</h1>
+                    <p class="form-subtitle" id="formSubtitle">Sign in to access exclusive fan content</p>
+                </div>
+
+                <!-- Form Toggle -->
+                <div class="form-toggle-container">
+                    <button class="form-toggle-btn active" id="loginToggle" data-form="login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Sign In</span>
+                    </button>
+                    <button class="form-toggle-btn" id="signupToggle" data-form="signup">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Create Account</span>
+                    </button>
+                </div>
+
+                <!-- Forms Wrapper -->
+                <div class="forms-wrapper">
+                    <!-- Login Form -->
+                    <form class="form login-form active" id="loginForm" autocomplete="on">
+                        <!-- Social Login -->
+                        <div class="social-login-section">
+                            <p class="social-login-title">Quick access with</p>
+                            <div class="social-buttons">
+                                <button type="button" class="social-btn google-btn">
+                                    <i class="fab fa-google"></i>
+                                    <span>Google</span>
+                                </button>
+                                <button type="button" class="social-btn spotify-btn">
+                                    <i class="fab fa-spotify"></i>
+                                    <span>Spotify</span>
+                                </button>
+                                <button type="button" class="social-btn apple-btn">
+                                    <i class="fab fa-apple"></i>
+                                    <span>Apple</span>
+                                </button>
+                            </div>
+                            <div class="divider">
+                                <span>or continue with email</span>
+                            </div>
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="input-field">
+                            <label for="loginEmail">
+                                <i class="fas fa-envelope"></i>
+                                Email Address
+                            </label>
+                            <input type="email" id="loginEmail" placeholder="your.email@example.com" required autocomplete="email">
+                            <div class="input-underline"></div>
+                            <div class="input-error" id="loginEmailError"></div>
+                        </div>
+
+                        <!-- Password Input -->
+                        <div class="input-field">
+                            <label for="loginPassword">
+                                <i class="fas fa-lock"></i>
+                                Password
+                            </label>
+                            <div class="password-wrapper">
+                                <input type="password" id="loginPassword" placeholder="Enter your password" required autocomplete="current-password">
+                                <button type="button" class="password-toggle-btn" id="toggleLoginPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="input-underline"></div>
+                            <div class="input-error" id="loginPasswordError"></div>
+                        </div>
+
+                        <!-- Remember & Forgot -->
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="rememberMe" checked>
+                                <span class="custom-checkbox"></span>
+                                <span class="checkbox-text">Remember me</span>
+                            </label>
+                            <a href="#forgot-password" class="forgot-password-link">Forgot password?</a>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="submit-btn login-submit-btn">
+                            <span class="btn-text">Sign In</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+
+                        <!-- Switch to Signup -->
+                        <div class="form-switch">
+                            <p>New to OliviaFan?</p>
+                            <button type="button" class="switch-btn" data-switch-to="signup">
+                                Create an account
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Signup Form -->
+                    <form class="form signup-form" id="signupForm" autocomplete="on">
+                        <!-- Name Fields -->
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="firstName">
+                                    <i class="fas fa-user"></i>
+                                    First Name
+                                </label>
+                                <input type="text" id="firstName" placeholder="Olivia" required autocomplete="given-name">
+                                <div class="input-underline"></div>
+                                <div class="input-error" id="firstNameError"></div>
+                            </div>
+                            <div class="input-field">
+                                <label for="lastName">
+                                    <i class="fas fa-user"></i>
+                                    Last Name
+                                </label>
+                                <input type="text" id="lastName" placeholder="Rodrigo" required autocomplete="family-name">
+                                <div class="input-underline"></div>
+                                <div class="input-error" id="lastNameError"></div>
+                            </div>
+                        </div>
+
+                        <!-- Username -->
+                        <div class="input-field">
+                            <label for="username">
+                                <i class="fas fa-at"></i>
+                                Username
+                            </label>
+                            <input type="text" id="username" placeholder="@oliviafan" required autocomplete="username">
+                            <div class="input-underline"></div>
+                            <div class="input-error" id="usernameError"></div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="input-field">
+                            <label for="signupEmail">
+                                <i class="fas fa-envelope"></i>
+                                Email Address
+                            </label>
+                            <input type="email" id="signupEmail" placeholder="your.email@example.com" required autocomplete="email">
+                            <div class="input-underline"></div>
+                            <div class="input-error" id="signupEmailError"></div>
+                        </div>
+
+                        <!-- Password Fields -->
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="signupPassword">
+                                    <i class="fas fa-lock"></i>
+                                    Password
+                                </label>
+                                <div class="password-wrapper">
+                                    <input type="password" id="signupPassword" placeholder="Create password" required autocomplete="new-password">
+                                    <button type="button" class="password-toggle-btn" id="toggleSignupPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="input-underline"></div>
+                                <div class="input-error" id="signupPasswordError"></div>
+                            </div>
+                            <div class="input-field">
+                                <label for="confirmPassword">
+                                    <i class="fas fa-lock"></i>
+                                    Confirm Password
+                                </label>
+                                <input type="password" id="confirmPassword" placeholder="Confirm password" required autocomplete="new-password">
+                                <div class="input-underline"></div>
+                                <div class="input-error" id="confirmPasswordError"></div>
+                            </div>
+                        </div>
+
+                        <!-- Fan Level -->
+                        <div class="input-field select-field">
+                            <label for="fanLevel">
+                                <i class="fas fa-fire"></i>
+                                Fan Level
+                            </label>
+                            <select id="fanLevel" required>
+                                <option value="" disabled selected>Select your fan level</option>
+                                <option value="casual">🎧 Casual Listener</option>
+                                <option value="fan">💜 Big Fan</option>
+                                <option value="superfan">⭐ Superfan</option>
+                                <option value="obsessed">🔥 Obsessed (like me!)</option>
+                            </select>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <!-- Favorite Song -->
+                        <div class="input-field">
+                            <label for="favoriteSong">
+                                <i class="fas fa-heart"></i>
+                                Favorite Song (Optional)
+                            </label>
+                            <input type="text" id="favoriteSong" placeholder="vampire, drivers license..." autocomplete="off">
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <!-- Terms -->
+                        <div class="terms-section">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="termsAgreement" required>
+                                <span class="custom-checkbox"></span>
+                                <span class="checkbox-text">
+                                    I agree to the <a href="#terms" class="terms-link">Terms of Service</a> and 
+                                    <a href="#privacy" class="terms-link">Privacy Policy</a>
+                                </span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletterSubscription">
+                                <span class="custom-checkbox"></span>
+                                <span class="checkbox-text">
+                                    Subscribe to newsletter for updates
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="submit-btn signup-submit-btn">
+                            <span class="btn-text">Create Account</span>
+                            <i class="fas fa-user-plus"></i>
+                        </button>
+
+                        <!-- Switch to Login -->
+                        <div class="form-switch">
+                            <p>Already have an account?</p>
+                            <button type="button" class="switch-btn" data-switch-to="login">
+                                Sign in here
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Form Progress Indicator -->
+                    <div class="form-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-steps">
+                            <span class="progress-step active">Login</span>
+                            <span class="progress-step">Sign Up</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Badge -->
+                <div class="security-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Your data is securely encrypted</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </main>
+
+    <!-- Notifications Container -->
+    <div id="notificationContainer"></div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotPasswordModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Reset Your Password</h2>
+            <p>Enter your email address and we'll send you a link to reset your password.</p>
+            <div class="input-field">
+                <label for="resetEmail">
+                    <i class="fas fa-envelope"></i>
+                    Email Address
+                </label>
+                <input type="email" id="resetEmail" placeholder="your.email@example.com">
+                <div class="input-underline"></div>
+            </div>
+            <button class="submit-btn modal-submit-btn">Send Reset Link</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

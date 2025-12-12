@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OliviaFan Community</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="user-card.css">
+    <link rel="stylesheet" href="chat-sidebar.css">
+    <link rel="stylesheet" href="page-transition.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Main Dashboard Layout -->
+    <div class="dashboard-layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-heart"></i>
+                    <span>OliviaFan</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#feed" class="nav-item active" data-page="feed">
+                    <i class="fas fa-home"></i>
+                    <span>Feed</span>
+                </a>
+                <a href="#friends" class="nav-item" data-page="friends">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Friends</span>
+                    <span class="nav-badge" id="friendRequestsBadge">3</span>
+                </a>
+                <a href="#profile" class="nav-item" data-page="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#groups" class="nav-item" data-page="groups">
+                    <i class="fas fa-users"></i>
+                    <span>Groups</span>
+                </a>
+                <a href="#events" class="nav-item" data-page="events">
+                    <i class="fas fa-calendar"></i>
+                    <span>Events</span>
+                </a>
+                <a href="#marketplace" class="nav-item" data-page="marketplace">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Marketplace</span>
+                </a>
+                <div class="nav-divider"></div>
+                <a href="#saved" class="nav-item" data-page="saved">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Saved</span>
+                </a>
+                <a href="#memories" class="nav-item" data-page="memories">
+                    <i class="fas fa-history"></i>
+                    <span>Memories</span>
+                </a>
+                <a href="#settings" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#logout" class="nav-item" data-page="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+            
+            <!-- Quick Friends List -->
+            <div class="quick-friends">
+                <h4>Quick Friends</h4>
+                <div class="quick-friends-list" id="quickFriends">
+                    <!-- Quick friends will be loaded here -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <div class="top-nav">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search OliviaFan..." id="globalSearch">
+                </div>
+                
+                <div class="top-nav-right">
+                    <!-- Create Post Button -->
+                    <button class="create-post-btn" id="createPostBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Create Post</span>
+                    </button>
+                    
+                    <!-- Notifications -->
+                    <div class="notification-container">
+                        <button class="notification-btn" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge" id="notificationCount">3</span>
+                        </button>
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notification-header">
+                                <h4>Notifications</h4>
+                                <button class="mark-all-read">Mark all as read</button>
+                            </div>
+                            <div class="notification-list" id="notificationList">
+                                <!-- Notifications will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="user-menu-container">
+                        <div class="user-avatar" id="userMenuBtn">
+                            <img src="https://i.pravatar.cc/150?img=1" alt="User" id="userAvatarSmall">
+                        </div>
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="user-info-dropdown">
+                                <img src="https://i.pravatar.cc/150?img=1" alt="User">
+                                <div>
+                                    <h4 id="userNameDropdown">Olivia Fan</h4>
+                                    <span>See your profile</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#profile" class="dropdown-item" data-page="profile">
+                                <i class="fas fa-user"></i>
+                                <span>Your Profile</span>
+                            </a>
+                            <a href="#settings" class="dropdown-item" data-page="settings">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#logout" class="dropdown-item" data-page="logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Log Out</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Content Container -->
+            <div class="page-container">
+                <!-- Feed Page -->
+                <div class="page-content active" id="feed-page" data-page="feed">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+
+                <!-- Friends Page -->
+                <div class="page-content" id="friends-page" data-page="friends">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+
+                <!-- Profile Page -->
+                <div class="page-content" id="profile-page" data-page="profile">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+
+                <!-- Groups Page -->
+                <div class="page-content" id="groups-page" data-page="groups">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+
+                <!-- Events Page -->
+                <div class="page-content" id="events-page" data-page="events">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+
+                <!-- Marketplace Page -->
+                <div class="page-content" id="marketplace-page" data-page="marketplace">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+
+                <!-- Saved Page -->
+                <div class="page-content" id="saved-page" data-page="saved">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+
+                <!-- Memories Page -->
+                <div class="page-content" id="memories-page" data-page="memories">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+
+                <!-- Settings Page -->
+                <div class="page-content" id="settings-page" data-page="settings">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+
+                <!-- Logout Confirmation Page -->
+                <div class="page-content" id="logout-page" data-page="logout">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar - Chat & Friends -->
+        <aside class="right-sidebar">
+            <!-- Online Friends -->
+            <div class="online-friends-section">
+                <div class="section-header">
+                    <h4>Online Friends</h4>
+                    <span class="online-count" id="onlineCount">0 online</span>
+                </div>
+                <div class="online-friends-list" id="onlineFriendsList">
+                    <!-- Online friends will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Birthdays -->
+            <div class="birthdays-section">
+                <div class="section-header">
+                    <h4>Birthdays</h4>
+                </div>
+                <div class="birthdays-list" id="birthdaysList">
+                    <!-- Birthdays will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Chat Sidebar -->
+            <!-- Chat Sidebar -->
+<div class="chat-sidebar">
+    <div class="chat-container">
+        <div class="chat-header">
+            <h4>Chats</h4>
+            <div class="chat-actions">
+                <button class="chat-action-btn" id="newMessageBtn" title="New Message">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button class="chat-action-btn" title="Chat Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Chat Search -->
+        <div class="chat-search">
+            <div class="chat-search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search messages..." id="chatSearch">
+            </div>
+        </div>
+        
+        <!-- Chat List -->
+        <div class="chat-content">
+            <div class="chat-list" id="chatList">
+                <!-- Chat conversations will be loaded here -->
+            </div>
+            
+            <!-- Active Chat Window -->
+            <div class="active-chat" id="activeChat">
+                <div class="active-chat-header">
+                    <button class="back-to-chats" id="backToChats">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="chat-partner-info">
+                        <img src="" alt="" id="chatPartnerAvatar">
+                        <div>
+                            <h5 id="chatPartnerName"></h5>
+                            <span id="chatPartnerStatus"></span>
+                        </div>
+                    </div>
+                    <div class="chat-header-actions">
+                        <!-- <button class="chat-header-btn">
+                            <i class="fas fa-phone"></i>
+                        </button>
+                        <button class="chat-header-btn">
+                            <i class="fas fa-video"></i>
+                        </button> -->
+                        <button class="chat-header-btn">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be loaded here -->
+                </div>
+                
+                <div class="chat-input-container">
+                    <div class="chat-input-actions">
+                        <button class="chat-input-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="chat-input-btn">
+                            <i class="fas fa-image"></i>
+                        </button>
+                        <button class="chat-input-btn">
+                            <i class="fas fa-gift"></i>
+                        </button>
+                    </div>
+                    <input type="text" placeholder="Type a message..." id="chatInput" autocomplete="off">
+                    <button class="send-message-btn" id="sendMessageBtn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- New Message Modal -->
+    <div class="modal" id="newMessageModal">
+        <div class="modal-content new-message-modal">
+            <div class="modal-header">
+                <h3>New Message</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-friends">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search friends..." id="messageFriendSearch">
+                </div>
+                <div class="friends-to-message" id="friendsToMessage">
+                    <!-- Friends list for messaging -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Create Post Modal -->
+    <div class="modal" id="createPostModal">
+        <div class="modal-content create-post-modal">
+            <div class="modal-header">
+                <h3>Create Post</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="post-author">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="User">
+                    <div>
+                        <h4 id="modalUserName">Olivia Fan</h4>
+                        <select id="postAudience">
+                            <option value="public">🌍 Public</option>
+                            <option value="friends">👥 Friends</option>
+                            <option value="onlyme">👤 Only me</option>
+                        </select>
+                    </div>
+                </div>
+                <textarea placeholder="What's on your mind?" id="postContent"></textarea>
+                <div class="post-preview" id="postPreview"></div>
+                <div class="post-options">
+                    <button class="post-option-btn" data-type="photo" id="addPhotoBtn">
+                        <i class="fas fa-image"></i>
+                        <span>Photo/Video</span>
+                    </button>
+                    <button class="post-option-btn" data-type="tag">
+                        <i class="fas fa-user-tag"></i>
+                        <span>Tag People</span>
+                    </button>
+                    <button class="post-option-btn" data-type="feeling">
+                        <i class="fas fa-smile"></i>
+                        <span>Feeling/Activity</span>
+                    </button>
+                    <button class="post-option-btn" data-type="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Check In</span>
+                    </button>
+                </div>
+                <input type="file" id="postImageInput" accept="image/*,video/*" multiple style="display: none;">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary cancel-post">Cancel</button>
+                <button class="btn-primary post-submit">Post</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content report-modal">
+            <div class="modal-header">
+                <h3>Report Post</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Why are you reporting this post?</p>
+                <div class="report-options">
+                    <label class="report-option">
+                        <input type="radio" name="reportReason" value="spam">
+                        <span>It's spam</span>
+                    </label>
+                    <label class="report-option">
+                        <input type="radio" name="reportReason" value="nudity">
+                        <span>Nudity or sexual activity</span>
+                    </label>
+                    <label class="report-option">
+                        <input type="radio" name="reportReason" value="hate">
+                        <span>Hate speech or symbols</span>
+                    </label>
+                    <label class="report-option">
+                        <input type="radio" name="reportReason" value="violence">
+                        <span>Violence or dangerous organizations</span>
+                    </label>
+                    <label class="report-option">
+                        <input type="radio" name="reportReason" value="bullying">
+                        <span>Bullying or harassment</span>
+                    </label>
+                    <label class="report-option">
+                        <input type="radio" name="reportReason" value="other">
+                        <span>Other</span>
+                    </label>
+                </div>
+                <textarea placeholder="Additional details (optional)" id="reportDetails" style="display: none;"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary cancel-report">Cancel</button>
+                <button class="btn-primary submit-report">Submit Report</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content settings-modal">
+            <div class="modal-header">
+                <h3>Account Settings</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h4>Profile Information</h4>
+                    <div class="setting-item">
+                        <label>Display Name</label>
+                        <input type="text" id="displayName" value="Olivia Fan" placeholder="Your display name">
+                    </div>
+                    <div class="setting-item">
+                        <label>Bio</label>
+                        <textarea id="userBio" placeholder="Tell us about yourself...">Superfan since 2021 | Concert enthusiast | Merch collector</textarea>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h4>Privacy Settings</h4>
+                    <div class="setting-item">
+                        <label>Who can see your posts?</label>
+                        <select id="privacyPosts">
+                            <option value="public">Public</option>
+                            <option value="friends" selected>Friends Only</option>
+                            <option value="onlyme">Only Me</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary cancel-settings">Cancel</button>
+                <button class="btn-primary save-settings">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="dashboard.js"></script>
+</body>
+</html>
